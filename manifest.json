@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+
+  "name": "Braindead",
+  "description": "A learning tool to turn a braindead into an expert!",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+
+  "background": {
+    "scripts": ["main.js"],
+    "persistent": false
+  },
+
+   "permissions": [
+     "http://*/",
+     "activeTab"
+   ]
+}
