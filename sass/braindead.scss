@@ -1,5 +1,20 @@
+$isDebug: false;
 
+$tab-content-bgcolor: rgba(0,0,0,0);
+$quiz-content-panel-bgcolor: rgba(0,0,0,0);
+$quiz-add-panel-bgcolor: rgba(0,0,0,0);
+$quiz-table-bgcolor: rgba(0,0,0,0);
+$tb-row-bgcolor: rgba(0,0,0,0);
+$tb-data-bgcolor: rgba(0,0,0,0);
 
+@if $isDebug == true {
+  $tab-content-bgcolor: red;
+  $quiz-content-panel-bgcolor: blue;
+  $quiz-add-panel-bgcolor: green;
+  $quiz-table-bgcolor: gray;
+  $tb-row-bgcolor: yellow;
+  $tb-data-bgcolor: purple;
+}
 
 #braindead {
   z-index:2147483647;
@@ -16,7 +31,7 @@
   border-color: rgba(255,255,255,0.5);
 
   .tab-content {
-    //background-color:red;
+    background-color:$tab-content-bgcolor;
     font-size:12px;
   }
 
@@ -28,7 +43,7 @@
   }
 
   #quiz-content-panel {
-    //background-color:blue;
+    background-color:$quiz-content-panel-bgcolor;
     float:left; 
     width:80%;
 
@@ -37,19 +52,24 @@
     }
 
     #quiz-table {
+      width:100%;
+      background-color:$quiz-table-bgcolor;
       height:100%;
 
       .tb-row  { 
         width:100%; 
+        background-color:$tb-row-bgcolor;
       }
       .tb-data { 
+        background-color:$tb-data-bgcolor;
+        width:100%; 
         text-align:left; 
       }
     }
   }
 
   #quiz-add-panel {
-    //background-color:green;
+    background-color:$quiz-add-panel-bgcolor;
     float:left; 
     width:20%; 
     //height:80px;
