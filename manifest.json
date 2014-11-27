@@ -5,8 +5,14 @@
   "description": "A learning tool to turn a braindead into an expert!",
   "version": "1.0",
 
+  "icons": {
+    "16": "braindeadlogo.png",
+    "48": "braindeadlogo.png",
+    "32": "braindeadlogo.png"
+  },
+
   "browser_action": {
-    "default_icon": "icon.png"
+    "default_icon": "braindeadlogo.png"
   },
 
   "background": {
@@ -14,8 +20,8 @@
     "persistent": false
   },
 
-   "permissions": [
-     "http://*/",
-     "activeTab"
-   ]
+  "permissions": [
+    "http://*/",
+    "activeTab"
+  ]
 }
