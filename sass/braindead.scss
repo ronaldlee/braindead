@@ -4,22 +4,31 @@
 #braindead {
   z-index:2147483647;
   display:none;
-  background-color:rgba(0,0,0,0.8);
+  background-color:rgba(0,0,0,0.9);
   position: fixed;
   //top:0px;
   bottom:0px;
   right:0px;
   width:420px;
-  height:150px;
+  height:350px;
 
   border-style: solid;
   border-color: rgba(255,255,255,0.5);
 
   .tab-content {
+    //background-color:red;
     font-size:12px;
   }
 
+  #quiz-uppper-panel {
+
+  }
+  #quiz-bottom-panel {
+    color:white;
+  }
+
   #quiz-content-panel {
+    //background-color:blue;
     float:left; 
     width:80%;
 
@@ -37,9 +46,10 @@
   }
 
   #quiz-add-panel {
+    //background-color:green;
     float:left; 
     width:20%; 
-    height:80px
+    //height:80px;
   }
 
 }

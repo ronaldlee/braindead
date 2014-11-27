@@ -2,12 +2,12 @@
 #braindead {
   z-index: 2147483647;
   display: none;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   bottom: 0px;
   right: 0px;
   width: 420px;
-  height: 150px;
+  height: 350px;
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.5);
 }
@@ -15,27 +15,30 @@
 #braindead .tab-content {
   font-size: 12px;
 }
-/* line 22, ../sass/braindead.scss */
+/* line 26, ../sass/braindead.scss */
+#braindead #quiz-bottom-panel {
+  color: white;
+}
+/* line 30, ../sass/braindead.scss */
 #braindead #quiz-content-panel {
   float: left;
   width: 80%;
 }
-/* line 26, ../sass/braindead.scss */
+/* line 35, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table {
   width: 450px;
   height: 100%;
 }
-/* line 30, ../sass/braindead.scss */
+/* line 39, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table .tb-row {
   width: 100%;
 }
-/* line 33, ../sass/braindead.scss */
+/* line 42, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table .tb-data {
   text-align: left;
 }
-/* line 39, ../sass/braindead.scss */
+/* line 48, ../sass/braindead.scss */
 #braindead #quiz-add-panel {
   float: left;
   width: 20%;
-  height: 80px;
 }
