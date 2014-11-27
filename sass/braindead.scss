@@ -32,8 +32,11 @@
     float:left; 
     width:80%;
 
+    .quiz-input {
+      width:80%;
+    }
+
     #quiz-table {
-      width:450px; 
       height:100%;
 
       .tb-row  { 

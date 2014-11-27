@@ -20,9 +20,9 @@ $(document).ready(function(){
                  <form> \
                    <div id='quiz-content-panel'> \
                      <table id='quiz-table'> \
-                       <tr class='tb-row'><td class='tb-data'><font color='white'>Q:&nbsp;</font><input type='text' value='Type Quiz Here' style='width:300px'/> \
+                       <tr class='tb-row'><td class='tb-data'><font color='white'>Q:&nbsp;</font><input type='text' value='Type Quiz Here' class='quiz-input'/> \
                                                                           <font color='white''>?</font></td></tr>  \
-                       <tr class='tb-row'><td class='tb-data'><font color='white'>A:&nbsp;</font><input type='text' value='Type Answer Here' style='width:300px'/></td></tr> \
+                       <tr class='tb-row'><td class='tb-data'><font color='white'>A:&nbsp;</font><input type='text' value='Type Answer Here' class='quiz-input'/></td></tr> \
                      </table> \
                    </div> \
                    <div id='quiz-add-panel'> \

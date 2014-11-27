@@ -25,19 +25,22 @@
   width: 80%;
 }
 /* line 35, ../sass/braindead.scss */
-#braindead #quiz-content-panel #quiz-table {
-  width: 450px;
-  height: 100%;
+#braindead #quiz-content-panel .quiz-input {
+  width: 80%;
 }
 /* line 39, ../sass/braindead.scss */
+#braindead #quiz-content-panel #quiz-table {
+  height: 100%;
+}
+/* line 42, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table .tb-row {
   width: 100%;
 }
-/* line 42, ../sass/braindead.scss */
+/* line 45, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table .tb-data {
   text-align: left;
 }
-/* line 48, ../sass/braindead.scss */
+/* line 51, ../sass/braindead.scss */
 #braindead #quiz-add-panel {
   float: left;
   width: 20%;
