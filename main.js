@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
 chrome.browserAction.onClicked.addListener(function(tab) {
   // No tabs or host permissions needed!
   chrome.tabs.insertCSS(null, {file: "jquery-ui.css"});
-  chrome.tabs.insertCSS(null, {file: "braindead.css"});
+//  chrome.tabs.insertCSS(null, {file: "stylesheets\braindead.css"});
+  chrome.tabs.insertCSS(null, {file: "stylesheets/braindead.css"});
   chrome.tabs.executeScript(null, {file: "jquery.min.js"});
   chrome.tabs.executeScript(null, {file: "jquery-ui.min.js"});
   chrome.tabs.executeScript(null, {file: "braindead.js"});

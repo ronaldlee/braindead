@@ -1,0 +1,45 @@
+
+
+
+#braindead {
+  z-index:2147483647;
+  display:none;
+  background-color:rgba(0,0,0,0.8);
+  position: fixed;
+  //top:0px;
+  bottom:0px;
+  right:0px;
+  width:420px;
+  height:150px;
+
+  border-style: solid;
+  border-color: rgba(255,255,255,0.5);
+
+  .tab-content {
+    font-size:12px;
+  }
+
+  #quiz-content-panel {
+    float:left; 
+    width:80%;
+
+    #quiz-table {
+      width:450px; 
+      height:100%;
+
+      .tb-row  { 
+        width:100%; 
+      }
+      .tb-data { 
+        text-align:left; 
+      }
+    }
+  }
+
+  #quiz-add-panel {
+    float:left; 
+    width:20%; 
+    height:80px
+  }
+
+}
