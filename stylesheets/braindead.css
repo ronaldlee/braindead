@@ -1,4 +1,4 @@
-/* line 24, ../sass/braindead.scss */
+/* line 26, ../sass/braindead.scss */
 #braindead {
   z-index: 2147483647;
   display: none;
@@ -11,71 +11,83 @@
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.5);
 }
-/* line 38, ../sass/braindead.scss */
+/* line 40, ../sass/braindead.scss */
 #braindead #braindead-main {
   background-color: transparent;
   border-style: none;
 }
-/* line 43, ../sass/braindead.scss */
+/* line 45, ../sass/braindead.scss */
 #braindead #braindead-bottom {
   background-color: white;
   position: absolute;
-  bottom: 0px;
-  width: 98%;
+  bottom: 2px;
+  left: 2px;
+  width: 99%;
+  height: 24px;
   color: black;
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 2px;
-  padding-bottom: 2px;
 }
 /* line 54, ../sass/braindead.scss */
-#braindead #braindead-bottom #braindead-logo {
-  float: right;
-  width: 20px;
+#braindead #braindead-bottom #braindead-infoscroller {
+  float: left;
+  width: 93%;
   height: 20px;
-}
-/* line 60, ../sass/braindead.scss */
-#braindead #braindead-bottom #braindead-logo-img {
-  width: 20px;
-  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  background-color: #efefef;
 }
 /* line 66, ../sass/braindead.scss */
+#braindead #braindead-bottom #braindead-logo {
+  float: right;
+  margin-right: 2px;
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+}
+/* line 73, ../sass/braindead.scss */
+#braindead #braindead-bottom #braindead-logo #braindead-logo-img {
+  width: 20px;
+  height: 20px;
+}
+/* line 80, ../sass/braindead.scss */
 #braindead .tab-content {
   background-color: transparent;
   font-size: 12px;
 }
-/* line 74, ../sass/braindead.scss */
+/* line 88, ../sass/braindead.scss */
 #braindead #quiz-bottom-panel {
   color: white;
 }
-/* line 78, ../sass/braindead.scss */
+/* line 92, ../sass/braindead.scss */
 #braindead #quiz-content-panel {
   background-color: transparent;
   float: left;
   width: 80%;
 }
-/* line 83, ../sass/braindead.scss */
+/* line 97, ../sass/braindead.scss */
 #braindead #quiz-content-panel .quiz-input {
-  width: 80%;
+  width: 90%;
 }
-/* line 87, ../sass/braindead.scss */
+/* line 101, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table {
   width: 100%;
   background-color: transparent;
   height: 100%;
 }
-/* line 92, ../sass/braindead.scss */
+/* line 106, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table .tb-row {
   width: 100%;
   background-color: transparent;
 }
-/* line 96, ../sass/braindead.scss */
+/* line 110, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table .tb-data {
   background-color: transparent;
   width: 100%;
   text-align: left;
 }
-/* line 104, ../sass/braindead.scss */
+/* line 118, ../sass/braindead.scss */
 #braindead #quiz-add-panel {
   background-color: transparent;
   float: left;
