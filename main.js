@@ -25,6 +25,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.executeScript(null, {file: "libs/jquery.min.js"});
   chrome.tabs.executeScript(null, {file: "libs/jquery-ui.min.js"});
   chrome.tabs.executeScript(null, {file: "libs/jquery.loadTemplate-1.4.5.min.js"});
+  chrome.tabs.executeScript(null, {file: "libs/backbone-min.js"});
   chrome.tabs.executeScript(null, {file: "braindead.js"});
   /*
   chrome.tabs.executeScript({

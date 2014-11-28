@@ -22,5 +22,12 @@ when you search something, if the plugin finds that you search before, it will p
 
 ==========================================
 tech:
--how to load the template in?
+x-how to load the template in?
+
+-retrieve the current url
+-save the question/answer + url to the local storage
+-post the question/answer + url to the server
+
+advnaced:
+-highlight the part of the article that ties to that question (references)
 

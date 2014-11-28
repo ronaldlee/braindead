@@ -26,7 +26,7 @@ $(document).ready(function(){
              <div id='braindead-bottom'> \
              </div> \
           </div>";
-        $('body').append(content);
+        $('html').append(content);
 
         //$('body').loadTemplate("chrome-extension-resource://templates/braindead_main.html");
         
