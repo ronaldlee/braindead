@@ -28,6 +28,6 @@
   "web_accessible_resources": [
     "templates/braindead_quiz_tab.html",
     "templates/braindead_bottom.html",
-    "imags/braindeadlogo.png"
+    "images/braindeadlogo.png"
   ]
 }
