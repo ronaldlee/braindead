@@ -1,4 +1,4 @@
-/* line 19, ../sass/braindead.scss */
+/* line 23, ../sass/braindead.scss */
 #braindead {
   z-index: 2147483647;
   display: none;
@@ -11,45 +11,58 @@
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.5);
 }
-/* line 33, ../sass/braindead.scss */
+/* line 37, ../sass/braindead.scss */
+#braindead #braindead-main {
+  background-color: #00ffff;
+  border-style: none;
+}
+/* line 42, ../sass/braindead.scss */
+#braindead #braindead-bottom {
+  background-color: #ff00ff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
+/* line 49, ../sass/braindead.scss */
 #braindead .tab-content {
-  background-color: transparent;
+  background-color: red;
   font-size: 12px;
 }
-/* line 41, ../sass/braindead.scss */
+/* line 57, ../sass/braindead.scss */
 #braindead #quiz-bottom-panel {
   color: white;
 }
-/* line 45, ../sass/braindead.scss */
+/* line 61, ../sass/braindead.scss */
 #braindead #quiz-content-panel {
-  background-color: transparent;
+  background-color: blue;
   float: left;
   width: 80%;
 }
-/* line 50, ../sass/braindead.scss */
+/* line 66, ../sass/braindead.scss */
 #braindead #quiz-content-panel .quiz-input {
   width: 80%;
 }
-/* line 54, ../sass/braindead.scss */
+/* line 70, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table {
   width: 100%;
-  background-color: transparent;
+  background-color: gray;
   height: 100%;
 }
-/* line 59, ../sass/braindead.scss */
+/* line 75, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table .tb-row {
   width: 100%;
-  background-color: transparent;
+  background-color: yellow;
 }
-/* line 63, ../sass/braindead.scss */
+/* line 79, ../sass/braindead.scss */
 #braindead #quiz-content-panel #quiz-table .tb-data {
-  background-color: transparent;
+  background-color: purple;
   width: 100%;
   text-align: left;
 }
-/* line 71, ../sass/braindead.scss */
+/* line 87, ../sass/braindead.scss */
 #braindead #quiz-add-panel {
-  background-color: transparent;
+  background-color: green;
   float: left;
   width: 20%;
 }

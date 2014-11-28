@@ -1,4 +1,4 @@
-$isDebug: false;
+$isDebug: true;
 
 $tab-content-bgcolor: rgba(0,0,0,0);
 $quiz-content-panel-bgcolor: rgba(0,0,0,0);
@@ -6,6 +6,8 @@ $quiz-add-panel-bgcolor: rgba(0,0,0,0);
 $quiz-table-bgcolor: rgba(0,0,0,0);
 $tb-row-bgcolor: rgba(0,0,0,0);
 $tb-data-bgcolor: rgba(0,0,0,0);
+$braindead-main-bgcolor: rgba(0,0,0,0); 
+$braindead-bottom-bgcolor: rgba(0,0,0,0); 
 
 @if $isDebug == true {
   $tab-content-bgcolor: red;
@@ -14,6 +16,8 @@ $tb-data-bgcolor: rgba(0,0,0,0);
   $quiz-table-bgcolor: gray;
   $tb-row-bgcolor: yellow;
   $tb-data-bgcolor: purple;
+  $braindead-main-bgcolor: #00ffff; 
+  $braindead-bottom-bgcolor: #ff00ff; 
 }
 
 #braindead {
@@ -29,6 +33,18 @@ $tb-data-bgcolor: rgba(0,0,0,0);
 
   border-style: solid;
   border-color: rgba(255,255,255,0.5);
+
+  #braindead-main {
+    background-color:$braindead-main-bgcolor;
+    border-style: none;
+  }
+
+  #braindead-bottom {
+    background-color:$braindead-bottom-bgcolor;
+    position:absolute; bottom:0;
+    width:100%;
+    color:white;
+  }
 
   .tab-content {
     background-color:$tab-content-bgcolor;
