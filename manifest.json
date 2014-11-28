@@ -23,5 +23,7 @@
   "permissions": [
     "http://*/",
     "activeTab"
-  ]
+  ],
+
+  "web_accessible_resources": ["templates/braindead_quiz_tab.html"]
 }
