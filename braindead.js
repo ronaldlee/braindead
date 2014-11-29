@@ -2,12 +2,13 @@
 //document.body.style.backgroundColor="blue";
 
 $(document).ready(function(){
-    if ($('#braindead').length) {
-        $("#braindead").fadeOut( "fast", function() {
-            $('#braindead').remove();
+    if ($('#braindead-iframe').length) {
+        $("#braindead-iframe").fadeOut( "fast", function() {
+            $('#braindead-iframe').remove();
         });
     }
     else {
+      /*
         var content = 
           "<div id='braindead'> \
              <div id='braindead-main'> \
@@ -26,6 +27,9 @@ $(document).ready(function(){
              <div id='braindead-bottom'> \
              </div> \
           </div>";
+          */
+        var content = "<iframe frameBorder='0' scrolling='no' id='braindead-iframe' src='" + chrome.extension.getURL("/templates/braindead_main.html") + "' />";
+
         $('html').append(content);
 
         //$('body').loadTemplate("chrome-extension-resource://templates/braindead_main.html");
@@ -35,6 +39,7 @@ $(document).ready(function(){
         $('body').append(content);
         $('#braindead').loadTemplate(chrome.extension.getURL("/templates/braindead_main.html"));
         */
+        /*
         $('#braindead-tabs-1').loadTemplate(chrome.extension.getURL("/templates/braindead_quiz_tab.html"));
         $('#braindead-bottom').loadTemplate(chrome.extension.getURL("/templates/braindead_bottom.html"));
 
@@ -42,6 +47,10 @@ $(document).ready(function(){
         $("#braindead").fadeIn("fast");
 
         $("#braindead-main").tabs();
+        */
+
+        $("#braindead-iframe").draggable();
+        $("#braindead-iframe").fadeIn("fast");
 
 //        $('#braindead-logo-img').attr('src', chrome.extension.getURL("/images/braindeadlogo.png"));
     }

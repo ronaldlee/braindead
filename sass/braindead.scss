@@ -23,19 +23,31 @@ $braindead-infoscroller-bgcolor: #efefef;
   $braindead-infoscroller-bgcolor: green;
 }
 
-#braindead {
-  z-index:2147483647;
+/*
+body {
+  padding:0;
+  margin:0;
+}
+  */
+
+#braindead-iframe {
+  z-index:2147483647 !important;
   display:none;
-  background-color:rgba(0,0,0,0.9);
-  position: fixed;
+  background-color:rgba(0,0,0,0.9) !important;
+  position: fixed !important;
   //top:0px;
-  bottom:0px;
-  right:0px;
+  bottom:10px !important;
+  right:10px !important;
+  width:420px !important;
+  height:350px !important;
+  overflow:hidden;
+  padding:0;
+  margin:0;
+}
+
+#braindead {
   width:420px;
   height:350px;
-
-  border-style: solid;
-  border-color: rgba(255,255,255,0.5);
 
   #braindead-main {
     background-color:$braindead-main-bgcolor;
@@ -80,13 +92,27 @@ $braindead-infoscroller-bgcolor: #efefef;
   .tab-content {
     background-color:$tab-content-bgcolor;
     font-size:12px;
+
+    .title {
+      color:white;
+    }
   }
 
-  #quiz-uppper-panel {
-
+  #quiz-upper-panel {
+    //background-color:yellow;
+    overflow:auto;
   }
+
   #quiz-bottom-panel {
-    color:white;
+    overflow:auto; 
+    height:140px;
+    
+    .quizzes-table {
+
+      .quizzes-question {
+        color:white;
+      }
+    }
   }
 
   #quiz-content-panel {
@@ -101,7 +127,7 @@ $braindead-infoscroller-bgcolor: #efefef;
     #quiz-table {
       width:100%;
       background-color:$quiz-table-bgcolor;
-      height:100%;
+      height:80px;
 
       .tb-row  { 
         width:100%; 
