@@ -25,7 +25,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
   //must call this to insert js in tab's page
   chrome.tabs.executeScript(null, {
-        code: 'var tabUrl = "' +tabUrl+'";'
+        code: 'var tabUrl = "' +tabUrl+'"; var tabid = "'+tab.id+'"; '
   }, function() {
     chrome.tabs.executeScript(null, {file: "braindead.js"}, function() { 
       //absolutely need the 'tab.id' here!!
