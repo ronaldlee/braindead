@@ -16,14 +16,15 @@
   },
 
   "background": {
-    "scripts": ["main.js"],
+    "scripts": ["libs/main.js"],
     "persistent": false
   },
 
   "permissions": [
     "http://*/",
     "activeTab",
-    "storage"
+    "storage",
+    "tabs"
   ],
 
   "web_accessible_resources": [
@@ -32,5 +33,16 @@
     "templates/braindead_main.html",
     "libs/backbone-min.map",
     "images/braindeadlogo.png"
-  ]
+  ],
+
+  "externally_connectable": {
+    "ids": [
+      "geeckejfhgpobdkipdbknmbffncpofcm",
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "*"
+    ],
+
+    "matches": []
+  }
+
 }

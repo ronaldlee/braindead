@@ -1,6 +1,15 @@
+content scripts: braindead.js
+
+
+
 Learning Web
 
 x-draggable
+
+
+UI:
+browser action logo: when is enabled it changes?
+
 
 Quiz
 - type question and answer
