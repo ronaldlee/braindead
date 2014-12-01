@@ -1,5 +1,7 @@
 Parse.initialize("Ga3gF3LIgw8nSXtygi7fodmlehYPT7vc5gdyPnuz", "n3TQpqA2CqUXBSGysKHDQZGENIiy8SYOcpqRpB6j");
 
+var tabUrl;
+
 /*
 var TestObject = Parse.Object.extend("TestObject");
 var testObject = new TestObject();
@@ -7,6 +9,32 @@ testObject.save({foo: "bar"}).then(function(object) {
     alert("yay! it worked");
 });
 */
+
+function addQuiz() {
+  alert("addQuiz");
+  var question = $('#question').val();
+  var answer   = $('#answer').val();
+
+  var Quiz = Parse.Object.extend("Quiz");
+  var quiz = new Quiz();
+   
+  quiz.set("question", question);
+  quiz.set("answer",answer);
+  quiz.set("url", tabUrl);
+   
+  quiz.save(null, {
+    success: function(quiz) {
+        // Execute any logic that should take place after the object is saved.
+        alert('New object created with objectId: ' + quiz.id);
+      },
+      error: function(quiz, error) {
+        // Execute any logic that should take place if the save fails.
+        // error is a Parse.Error with an error code and message.
+        alert('Failed to create new object, with error code: ' + error.message);
+      }
+  });
+
+}
 
 function signupUser() {
   var email = $('#email').val();
@@ -61,7 +89,6 @@ $( document ).ready(function() {
        data[params[x].split('=')[0]] = params[x].split('=')[1];
     }
 
-    var tabUrl;
     if (data['tabUrl']) {
       tabUrl = data['tabUrl'];
     }
@@ -69,11 +96,7 @@ $( document ).ready(function() {
     $('#braindead-tabs-1').loadTemplate(chrome.extension.getURL("/templates/braindead_quiz_tab.html"), {},
       {
         success: function() {
-          $('#quiz-add-button').on('click', 
-            function() { 
-              console.log('clicked5: taburl: ' + tabUrl); 
-            }
-          );
+          $('#quiz-add-button').click(addQuiz);
         }
       }
     );
