@@ -8,6 +8,44 @@ testObject.save({foo: "bar"}).then(function(object) {
 });
 */
 
+function signupUser() {
+  var email = $('#email').val();
+  var pwd   = $('#pwd').val();
+
+  var user = new Parse.User();
+  user.set("username", email);
+  user.set("password", pwd);
+  user.set("email", email);
+   
+  user.signUp(null, {
+    success: function(user) {
+      alert('Signup ok');
+      $("#braindead-main-container").show();
+      $("#braindead-login").hide();
+    },
+    error: function(user, error) {
+      alert("signup Error: " + error.code + " " + error.message);
+    }
+  });
+}
+
+function loginUser() {
+  var email = $('#email').val();
+  var pwd   = $('#pwd').val();
+
+  Parse.User.logIn(email, pwd, {
+    success: function(user) {
+    // Do stuff after successful login.
+      alert('login success');
+      $("#braindead-main-container").show();
+      $("#braindead-login").hide();
+    },
+    error: function(user, error) {
+    // The login failed. Check error to see why.
+      alert("login Error: " + error.code + " " + error.message);
+    }
+  });
+}
 
 $( document ).ready(function() {
   var isTest = false;
@@ -47,6 +85,8 @@ $( document ).ready(function() {
   } else {
     // show the signup or login page
     
+    $('#login-button').click(loginUser);
+    $('#signup-button').click(signupUser);
     $('#braindead-login').show();
   }
 
