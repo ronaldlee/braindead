@@ -49,6 +49,25 @@ body {
   width:420px;
   height:350px;
 
+  #braindead-login{
+    background-color: $braindead-main-bgcolor;
+    border-style: none;
+    width:250px;
+    height:100px;
+    margin: 100px auto;
+
+    table {
+      color:white; 
+
+      tr {
+        td {
+          padding: 5px;
+          text-align:left;
+        }
+      }
+    }
+  }
+
   #braindead-main {
     background-color:$braindead-main-bgcolor;
     border-style: none;

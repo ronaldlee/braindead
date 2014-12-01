@@ -8,21 +8,42 @@
   <body style='margin:0px'>
     <div id='braindead'>
 
-       <div id='braindead-main'>
-         <ul>
-           <li><a href='#braindead-tabs-1'>Quiz</a></li>
-           <li><a href='#braindead-tabs-2'>Others</a></li>
-           <li><a href='#braindead-tabs-3'>Config</a></li>
-         </ul>
-         <div id='braindead-tabs-1' class='tab-content'>
-         </div>
-         <div id='braindead-tabs-2' class='tab-content'>
-         </div>
-         <div id='braindead-tabs-3' class='tab-content'>
-         </div>
-       </div> <!-- end braindead-main -->
+       <div id='braindead-login' style='display:none'>
+         <form>
+           <table>
+             <tr>
+               <td>Email:&nbsp;</td>
+               <td><input type='text' name='email'/></td>
+             </tr>
+             <tr>
+               <td>Password:&nbsp;</td>
+               <td><input type='password' name='password'/></td>
+             </tr>
+             <tr>
+               <td><input type='submit' value='Login'/></td>
+               <td></td>
+             </tr>
+           </table>
+         </form>
+       </div>
 
-       <div id='braindead-bottom'>
+       <div id='braindead-main-container' style='display:none'>
+         <div id='braindead-main'>
+           <ul>
+             <li><a href='#braindead-tabs-1'>Quiz</a></li>
+             <li><a href='#braindead-tabs-2'>Others</a></li>
+             <li><a href='#braindead-tabs-3'>Config</a></li>
+           </ul>
+           <div id='braindead-tabs-1' class='tab-content'>
+           </div>
+           <div id='braindead-tabs-2' class='tab-content'>
+           </div>
+           <div id='braindead-tabs-3' class='tab-content'>
+           </div>
+         </div> <!-- end braindead-main -->
+
+         <div id='braindead-bottom'>
+         </div>
        </div>
     </div>
   </body>
@@ -30,6 +51,7 @@
   <script src="/libs/jquery-ui.min.js"></script>
   <script src="/libs/jquery.loadTemplate-1.4.4.min.js"></script>
   <script src="/libs/backbone-min.js"></script>
+  <script src="/libs/parse-1.3.2.min.js"></script>
 
   <script src="/braindead_main.js"></script>
 </html>

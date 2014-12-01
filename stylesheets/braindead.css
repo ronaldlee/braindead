@@ -25,11 +25,28 @@ body {
   height: 350px;
 }
 /* line 52, ../sass/braindead.scss */
+#braindead #braindead-login {
+  background-color: transparent;
+  border-style: none;
+  width: 250px;
+  height: 100px;
+  margin: 100px auto;
+}
+/* line 59, ../sass/braindead.scss */
+#braindead #braindead-login table {
+  color: white;
+}
+/* line 63, ../sass/braindead.scss */
+#braindead #braindead-login table tr td {
+  padding: 5px;
+  text-align: left;
+}
+/* line 71, ../sass/braindead.scss */
 #braindead #braindead-main {
   background-color: transparent;
   border-style: none;
 }
-/* line 57, ../sass/braindead.scss */
+/* line 76, ../sass/braindead.scss */
 #braindead #braindead-bottom {
   background-color: white;
   position: absolute;
@@ -39,7 +56,7 @@ body {
   height: 24px;
   color: black;
 }
-/* line 66, ../sass/braindead.scss */
+/* line 85, ../sass/braindead.scss */
 #braindead #braindead-bottom #braindead-infoscroller {
   float: left;
   width: 93%;
@@ -51,7 +68,7 @@ body {
   left: 2px;
   background-color: #efefef;
 }
-/* line 78, ../sass/braindead.scss */
+/* line 97, ../sass/braindead.scss */
 #braindead #braindead-bottom #braindead-logo {
   float: right;
   margin-right: 2px;
@@ -59,52 +76,52 @@ body {
   width: 20px;
   height: 20px;
 }
-/* line 85, ../sass/braindead.scss */
+/* line 104, ../sass/braindead.scss */
 #braindead #braindead-bottom #braindead-logo #braindead-logo-img {
   width: 20px;
   height: 20px;
 }
-/* line 92, ../sass/braindead.scss */
+/* line 111, ../sass/braindead.scss */
 #braindead .tab-content {
   background-color: transparent;
   font-size: 12px;
 }
-/* line 96, ../sass/braindead.scss */
+/* line 115, ../sass/braindead.scss */
 #braindead .tab-content .title {
   color: white;
 }
-/* line 101, ../sass/braindead.scss */
+/* line 120, ../sass/braindead.scss */
 #braindead #quiz-upper-panel {
   overflow: auto;
 }
-/* line 105, ../sass/braindead.scss */
+/* line 124, ../sass/braindead.scss */
 #braindead #quiz-upper-panel #quiz-content-panel {
   background-color: transparent;
   float: left;
   width: 80%;
 }
-/* line 110, ../sass/braindead.scss */
+/* line 129, ../sass/braindead.scss */
 #braindead #quiz-upper-panel #quiz-content-panel .quiz-input {
   width: 90%;
 }
-/* line 114, ../sass/braindead.scss */
+/* line 133, ../sass/braindead.scss */
 #braindead #quiz-upper-panel #quiz-content-panel #quiz-table {
   width: 100%;
   background-color: transparent;
   height: 80px;
 }
-/* line 119, ../sass/braindead.scss */
+/* line 138, ../sass/braindead.scss */
 #braindead #quiz-upper-panel #quiz-content-panel #quiz-table .tb-row {
   width: 100%;
   background-color: transparent;
 }
-/* line 123, ../sass/braindead.scss */
+/* line 142, ../sass/braindead.scss */
 #braindead #quiz-upper-panel #quiz-content-panel #quiz-table .tb-data {
   background-color: transparent;
   width: 100%;
   text-align: left;
 }
-/* line 131, ../sass/braindead.scss */
+/* line 150, ../sass/braindead.scss */
 #braindead #quiz-upper-panel #quiz-add-panel {
   background-color: transparent;
   float: left;
@@ -113,7 +130,7 @@ body {
   line-height: 80px;
   text-align: center;
 }
-/* line 140, ../sass/braindead.scss */
+/* line 159, ../sass/braindead.scss */
 #braindead #quiz-upper-panel #quiz-add-panel #quiz-add-button {
   margin-top: 47px;
   padding: 5px 15px;
@@ -123,12 +140,12 @@ body {
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 152, ../sass/braindead.scss */
+/* line 171, ../sass/braindead.scss */
 #braindead #quiz-bottom-panel {
   overflow: auto;
   height: 140px;
 }
-/* line 158, ../sass/braindead.scss */
+/* line 177, ../sass/braindead.scss */
 #braindead #quiz-bottom-panel .quizzes-table .quizzes-question {
   color: white;
 }
