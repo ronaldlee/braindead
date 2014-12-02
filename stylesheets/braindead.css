@@ -146,6 +146,10 @@ body {
   height: 140px;
 }
 /* line 177, ../sass/braindead.scss */
-#braindead #quiz-bottom-panel .quizzes-table .quizzes-question {
+#braindead #quiz-bottom-panel #quizzes-table .quizzes-question {
+  color: white;
+}
+/* line 181, ../sass/braindead.scss */
+#braindead #quiz-bottom-panel #quizzes-table .quiz_delete {
   color: white;
 }

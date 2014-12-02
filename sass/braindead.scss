@@ -172,9 +172,13 @@ body {
     overflow:auto; 
     height:140px;
     
-    .quizzes-table {
+    #quizzes-table {
 
       .quizzes-question {
+        color:white;
+      }
+
+      .quiz_delete {
         color:white;
       }
     }

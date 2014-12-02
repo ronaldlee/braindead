@@ -10,8 +10,38 @@ testObject.save({foo: "bar"}).then(function(object) {
 });
 */
 
+function deleteQuiz(e) {
+  var src = e.currentTarget;
+  var quizId = $(src).data('quiz-id');
+
+  var Quiz = Parse.Object.extend("Quiz");
+  var query = new Parse.Query(Quiz);
+  query.get(quizId, {
+      success: function(quiz) {
+        // The object was retrieved successfully.
+
+          quiz.destroy({
+            success: function(myObject) {
+              // The object was deleted from the Parse Cloud.
+
+              //remove that entry in the quizzes table
+              $('#quizzes-table tr#' + quizId).remove();
+
+            },
+            error: function(myObject, error) {
+              // The delete failed.
+              // error is a Parse.Error with an error code and message.
+            }
+          });
+      },
+      error: function(object, error) {
+        // The object was not retrieved successfully.
+        // error is a Parse.Error with an error code and message.
+      }
+  });
+}
+
 function addQuiz() {
-  alert("addQuiz");
   var question = $('#question').val();
   var answer   = $('#answer').val();
 
@@ -25,7 +55,15 @@ function addQuiz() {
   quiz.save(null, {
     success: function(quiz) {
         // Execute any logic that should take place after the object is saved.
-        alert('New object created with objectId: ' + quiz.id);
+
+        //add a row to the table
+        row = $("<tr id='"+quiz.id+"'></tr>");
+        col1 = $("<td class='quizzes-question'>"+question+"</td>");
+        col2 = $('<td><a class="quiz_delete" id="quiz-delete-'+quiz.id+'" data-quiz-id="'+quiz.id+'" onclick="deleteQuiz(\''+quiz.id+'\');">Delete</a></td>');
+        row.append(col1, col2);
+
+        $('#quizzes-table').append(row);
+        $('#quiz-delete-'+quiz.id).click(deleteQuiz);
       },
       error: function(quiz, error) {
         // Execute any logic that should take place if the save fails.
