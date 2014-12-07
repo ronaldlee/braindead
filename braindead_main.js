@@ -10,6 +10,18 @@ testObject.save({foo: "bar"}).then(function(object) {
 });
 */
 
+function fbShare(e) {
+  alert('boooobeeeee');
+  FB.ui(
+  {
+    method: 'share',
+    href: 'https://developers.facebook.com/docs/'
+  }, function(response){});
+}
+
+function fbLogin() {
+}
+
 function deleteQuiz(e) {
   var src = e.currentTarget;
   var quizId = $(src).data('quiz-id');
@@ -114,10 +126,17 @@ function loginUser() {
 }
 
 $( document ).ready(function() {
+  FB.init({
+    appId      : '1544469515798401',
+    xfbml      : true,
+    version    : 'v2.1'
+  });
+
   var isTest = false;
+  var isForceShowLogin = false;
 
   var currentUser = Parse.User.current();
-  if (currentUser || isTest) {
+  if (!isForceShowLogin && (currentUser || isTest)) {
     $('#braindead-main-container').show();
 
     var params = location.href.split('?')[1].split('&');
@@ -143,12 +162,16 @@ $( document ).ready(function() {
 
     $("#braindead-main").tabs();
 
+    $('#fb-share-button').click(fbShare);
+
   } else {
     // show the signup or login page
     
     $('#login-button').click(loginUser);
     $('#signup-button').click(signupUser);
     $('#braindead-login').show();
+
+    $('#facebook-login').click(fbLogin);
   }
 
 

@@ -1,8 +1,9 @@
 todo:
+x-add/delete quiz
+-display quizes related to the url
 -login with gmail
+-login with nickname
 -backend to save user's questions/answers for the url
-
-
 
 ===================================
 content scripts: braindead.js

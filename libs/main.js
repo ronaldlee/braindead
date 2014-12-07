@@ -2,6 +2,8 @@
 
 chrome.browserAction.onClicked.addListener(function(tab) {
   // No tabs or host permissions needed!
+  //chrome.tabs.executeScript(null, {file: "libs/fb.js"});
+  chrome.tabs.executeScript(null, {file: "libs/sdk.js"});
   chrome.tabs.insertCSS(null, {file: "libs/jquery-ui.css"});
   chrome.tabs.insertCSS(null, {file: "stylesheets/braindead.css"});
   chrome.tabs.executeScript(null, {file: "libs/jquery.min.js"});

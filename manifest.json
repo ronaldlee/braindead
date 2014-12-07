@@ -5,6 +5,8 @@
   "description": "A learning tool to turn a braindead into an expert!",
   "version": "1.0",
 
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
   "icons": {
     "16": "braindeadlogo.png",
     "48": "braindeadlogo.png",
@@ -22,6 +24,7 @@
 
   "permissions": [
     "http://*/",
+    "https://*/",
     "activeTab",
     "storage",
     "tabs"
