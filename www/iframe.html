@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function () {
+    // init the FB JS SDK
+    FB.init({
+      appId:'1544469515798401', // App ID from the App Dashboard
+      status:true, // check the login status upon init?
+      cookie:true, // set sessions cookies to allow your server to access the session?
+      xfbml:true, // parse XFBML tags on this page?
+      version:'v2.1'
+    });
+
+    FB.getLoginStatus(function (response) {
+      if (response.status === 'connected') {
+console.log("fb login, post message");
+        // the user is logged in and has authenticated your
+        // app, and response.authResponse supplies
+        // the user's ID, a valid access token, a signed
+        // request, and the time the access token
+        // and signed request each expire
+        var uid = response.authResponse.userID;
+        var at = response.authResponse.accessToken;
+        // This is your messaging to the parent of the iFrame
+        parent.postMessage({connectStatus:"" + response.status + "", userID:"" + uid + "", accessToken:"" + at + ""}, "chrome-extension://geeckejfhgpobdkipdbknmbffncpofcm/"); //This MUST match the root domain where the iFrame will be inserted, or the message won't get passed
+      } else if (response.status === 'not_authorized') {
+        // the user is logged in to Facebook,
+        // but has not authenticated your app
+console.log("fb login, not authorized 2");
+          //scope: 'public_profile,email,publish_actions,user_friends', 
+        FB.login(function(response) {
+          // handle the response
+//console.log("fb login response: " + JSON.stringify(response));
+console.log("fb login response");
+        }, {
+          scope: 'public_profile,email,user_friends', 
+          return_scopes: true
+        });
+      } else {
+        // the user isn't logged in to Facebook.
+console.log("fb not login");
+        FB.login(function(response) {
+          // handle the response
+console.log("fb login response: " + JSON.stringify(response));
+        }, {
+          scope: 'public_profile,email,publish_actions,user_friends', 
+          return_scopes: true
+        });
+      }
+    });
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+/*
+  // Load the SDK's source Asynchronously
+  // Note that the debug version is being actively developed and might
+  // contain some type checks that are overly strict.
+  // Please report such bugs using the bugs tool.
+  (function (d, debug) {
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement('script');
+    js.id = id;
+    js.async = true;
+    js.src = "https://connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+    ref.parentNode.insertBefore(js, ref);
+  }(document, true));
+*/
+
+</script>
+</body>
+</html>
