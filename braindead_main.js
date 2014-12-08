@@ -2,6 +2,16 @@ Parse.initialize("Ga3gF3LIgw8nSXtygi7fodmlehYPT7vc5gdyPnuz", "n3TQpqA2CqUXBSGysK
 
 var tabUrl;
 
+var FBUser = {
+  userID: undefined,
+  accessToken: undefined,
+  firstName: undefined,
+  lastName: undefined,
+  name: undefined,
+  gender: undefined,
+  hometown: undefined
+}
+
 /*
 var TestObject = Parse.Object.extend("TestObject");
 var testObject = new TestObject();
@@ -20,6 +30,27 @@ function fbShare(e) {
 }
 
 function fbLogin() {
+  console.log('fbLogin');
+
+  /*
+  elt = document.createElement('iframe');
+  elt.id = 'facebook_load_frame';
+  elt.src = 'http://54.149.101.128/braindead/iframe.html';
+  document.getElementsByTagName('body')[0].appendChild(elt);
+  */
+
+  Parse.FacebookUtils.logIn('email,first_name,last_name,name,gender,hometown', {
+    success: function(user) {
+      if (!user.existed()) {
+        alert("User signed up and logged in through Facebook!");
+      } else {
+        alert("User logged in through Facebook!");
+      }
+    },
+    error: function(user, error) {
+      alert("User cancelled the Facebook login or did not fully authorize.");
+    }
+  });
 }
 
 function deleteQuiz(e) {
@@ -87,6 +118,7 @@ function addQuiz() {
 }
 
 function signupUser() {
+  /*
   var email = $('#email').val();
   var pwd   = $('#pwd').val();
 
@@ -105,10 +137,12 @@ function signupUser() {
       alert("signup Error: " + error.code + " " + error.message);
     }
   });
+  */
 }
 
 function loginUser() {
 
+  /*
   var email = $('#email').val();
   var pwd   = $('#pwd').val();
 
@@ -124,38 +158,20 @@ function loginUser() {
       alert("login Error: " + error.code + " " + error.message);
     }
   });
+  */
 }
 
-$( document ).ready(function() {
-  //hidden iframe to capture FB login crab
-  elt = document.createElement('iframe');
-  elt.id = 'facebook_load_frame';
-  elt.src = 'http://54.149.101.128/braindead/iframe.html';
-  document.getElementsByTagName('body')[0].appendChild(elt);
+function showLoginPanel() {
+    //show the signup or login page
+    
+    //$('#login-button').click(loginUser);
+    //$('#signup-button').click(signupUser);
 
-  // Message passing API from David Walsh at http://davidwalsh.name/window-iframe
-  // // Create IE + others compatible event handler
-  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-  var eventer = window[eventMethod];
-  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-  // Listen to message from child window
-  eventer(messageEvent,function(e) {
-    console.log("Connection status: "+e.data.connectStatus+"; UserID: "+e.data.userID+"; AccessToken: "+e.data.accessToken);
-    //This is the data from the Facebook SDK
-  },false);
-  
-  //====
-  FB.init({
-    appId      : '1544469515798401',
-    xfbml      : true,
-    version    : 'v2.1'
-  });
+    $('#facebook-login').click(fbLogin);
+    $('#braindead-login').show();
+}
 
-  var isTest = false;
-  var isForceShowLogin = false;
-
-  var currentUser = Parse.User.current();
-  if (!isForceShowLogin && (currentUser || isTest)) {
+function showMainPanel() {
     $('#braindead-main-container').show();
 
     var params = location.href.split('?')[1].split('&');
@@ -177,6 +193,120 @@ $( document ).ready(function() {
       }
     );
 
+    $('#braindead-tabs-3').loadTemplate(chrome.extension.getURL("/templates/braindead_config_tab.html"), {},
+      {
+        success: function() {
+        }
+      }
+    );
+
+    $('#braindead-bottom').loadTemplate(chrome.extension.getURL("/templates/braindead_bottom.html"));
+
+    $("#braindead-main").tabs();
+
+    $('#fb-share-button').click(fbShare);
+}
+
+function setupListenerForExternalIframeActions() {
+  //hidden iframe to capture FB login crab
+  elt = document.createElement('iframe');
+  elt.id = 'facebook_load_frame';
+  elt.src = 'http://54.149.101.128/braindead/iframe.html';
+  document.getElementsByTagName('body')[0].appendChild(elt);
+
+  // Message passing API from David Walsh at http://davidwalsh.name/window-iframe
+  // // Create IE + others compatible event handler
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  // Listen to message from child window
+  eventer(messageEvent,function(e) {
+    console.log("get message: connectStatus: "  + e.data.connectStatus);
+    var data = e.data;
+
+    console.log(data);
+
+    //This is the data from the Facebook SDK
+    if (data.connectStatus === 'connected') { //connected and authorized, retrieve the user id and access token
+      FBUser.userID      = data.userID;
+      FBUser.accessToken = data.accessToken;
+      FBUser.firstName   = data.fbFirstName;
+      FBUser.lastName    = data.fbLastName;
+      FBUser.name        = data.fbName;
+      FBUser.gender      = data.fbGender;
+      FBUser.hometown    = data.fbHometown;
+
+      //can show the app main content
+      showMainPanel();
+
+      /*
+      console.log("Connection status: " + data.connectStatus + "; UserID: " + data.userID + "; AccessToken: " + data.accessToken + 
+                  "; firstname: " + fbFirstName + "; lastname: " + fbLastName + 
+                  "; fbName: " + fbName + "; gender: " + fbGender +
+                  "; hometown: " + fbHometown);
+      */            
+    }
+    else if (data.connectStatus === 'not_authorized') { //connected but not authorized, display login icon
+      //display login popup
+      fbLogin();
+    }
+    else { //not connected at all, show login button too
+      showLoginPanel();
+    }
+  },false);
+}
+
+$( document ).ready(function() {
+  setupListenerForExternalIframeActions();
+  
+  //====
+  /*
+  FB.init({
+    appId      : '1544469515798401',
+    xfbml      : true,
+    version    : 'v2.1'
+  });
+  */
+
+  var isTest = false;
+  var isForceShowLogin = false;
+
+  //Parse.User.logOut();
+
+  /*
+  var currentUser = Parse.User.current();
+  if (!isForceShowLogin && (currentUser || isTest)) {
+    $('#braindead-main-container').show();
+
+    console.log("parse user: ");
+    console.log(currentUser);
+
+    var params = location.href.split('?')[1].split('&');
+    data = {};
+    for (x in params)
+    {
+       data[params[x].split('=')[0]] = params[x].split('=')[1];
+    }
+
+    if (data['tabUrl']) {
+      tabUrl = data['tabUrl'];
+    }
+
+    $('#braindead-tabs-1').loadTemplate(chrome.extension.getURL("/templates/braindead_quiz_tab.html"), {},
+      {
+        success: function() {
+          $('#quiz-add-button').click(addQuiz);
+        }
+      }
+    );
+
+    $('#braindead-tabs-3').loadTemplate(chrome.extension.getURL("/templates/braindead_config_tab.html"), {},
+      {
+        success: function() {
+        }
+      }
+    );
+
     $('#braindead-bottom').loadTemplate(chrome.extension.getURL("/templates/braindead_bottom.html"));
 
     $("#braindead-main").tabs();
@@ -184,15 +314,15 @@ $( document ).ready(function() {
     $('#fb-share-button').click(fbShare);
 
   } else {
-    // show the signup or login page
+    //show the signup or login page
     
-    $('#login-button').click(loginUser);
-    $('#signup-button').click(signupUser);
-    $('#braindead-login').show();
+    //$('#login-button').click(loginUser);
+    //$('#signup-button').click(signupUser);
 
     $('#facebook-login').click(fbLogin);
+    $('#braindead-login').show();
   }
-
+  */
 
 });
 
