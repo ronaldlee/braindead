@@ -4,13 +4,17 @@
  <meta charset="utf-8">
 </head>
 <body>
-<div id="fb-root"></div>
+  <div id="fb-root"></div>
+</body>
+<script src='libs/parse-1.3.2.min.js'></script>
 <script>
+  Parse.initialize("Ga3gF3LIgw8nSXtygi7fodmlehYPT7vc5gdyPnuz", "n3TQpqA2CqUXBSGysKHDQZGENIiy8SYOcpqRpB6j");
+
   window.fbAsyncInit = function () {
     // init the FB JS SDK
-    FB.init({
+    Parse.FacebookUtils.init({  //FB.init({
       appId:'1544469515798401', // App ID from the App Dashboard
-      status:true, // check the login status upon init?
+//      status:true, // check the login status upon init?
       cookie:true, // set sessions cookies to allow your server to access the session?
       xfbml:true, // parse XFBML tags on this page?
       version:'v2.1'
@@ -18,7 +22,7 @@
 
     FB.getLoginStatus(function (response) {
       if (response.status === 'connected') {
-console.log("fb login, post message");
+//console.log("fb login, post message 2");
         // the user is logged in and has authenticated your
         // app, and response.authResponse supplies
         // the user's ID, a valid access token, a signed
@@ -26,31 +30,48 @@ console.log("fb login, post message");
         // and signed request each expire
         var uid = response.authResponse.userID;
         var at = response.authResponse.accessToken;
+
+//console.log("fb login: user: " + JSON.stringify(response.authResponse));
+        FB.api('/me', {fields: 'email,first_name,last_name,name,gender,hometown'}, function(response) {
+          //console.log(response);
+          parent.postMessage({connectStatus:'connected', userID:uid, accessToken:at, 
+                              fbFirstName:response.first_name, fbLastName:response.last_name,
+                              fbName:response.name, fbGender:response.gender,
+                              fbHometown:response.hometown
+                             }, 
+                             "chrome-extension://geeckejfhgpobdkipdbknmbffncpofcm/"); //This MUST match the root domain where the iFrame will be inserted, or the message won't get passed
+        });
+
         // This is your messaging to the parent of the iFrame
-        parent.postMessage({connectStatus:"" + response.status + "", userID:"" + uid + "", accessToken:"" + at + ""}, "chrome-extension://geeckejfhgpobdkipdbknmbffncpofcm/"); //This MUST match the root domain where the iFrame will be inserted, or the message won't get passed
+
       } else if (response.status === 'not_authorized') {
         // the user is logged in to Facebook,
         // but has not authenticated your app
-console.log("fb login, not authorized 2");
+//console.log("fb login, not authorized 2");
           //scope: 'public_profile,email,publish_actions,user_friends', 
+
+        parent.postMessage({connectStatus:"" + response.status + ""}, "chrome-extension://geeckejfhgpobdkipdbknmbffncpofcm/");
+/*
         FB.login(function(response) {
-          // handle the response
-//console.log("fb login response: " + JSON.stringify(response));
-console.log("fb login response");
         }, {
           scope: 'public_profile,email,user_friends', 
           return_scopes: true
         });
+*/
       } else {
         // the user isn't logged in to Facebook.
-console.log("fb not login");
+//console.log("fb not login");
+        parent.postMessage({connectStatus:"" + response.status + ""}, "chrome-extension://geeckejfhgpobdkipdbknmbffncpofcm/");
+/*
         FB.login(function(response) {
           // handle the response
-console.log("fb login response: " + JSON.stringify(response));
+console.log("fb not login response");
+//console.log("fb login response: " + JSON.stringify(response));
         }, {
           scope: 'public_profile,email,publish_actions,user_friends', 
           return_scopes: true
         });
+*/
       }
     });
   };
@@ -82,5 +103,4 @@ console.log("fb login response: " + JSON.stringify(response));
 */
 
 </script>
-</body>
 </html>
