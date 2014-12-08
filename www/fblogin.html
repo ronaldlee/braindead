@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+</head>
+<body>
+  <div id="fb-root"></div>
+</body>
+<script src='libs/parse-1.3.2.min.js'></script>
+<script>
+  Parse.initialize("Ga3gF3LIgw8nSXtygi7fodmlehYPT7vc5gdyPnuz", "n3TQpqA2CqUXBSGysKHDQZGENIiy8SYOcpqRpB6j");
+
+  window.fbAsyncInit = function () {
+    // init the FB JS SDK
+    Parse.FacebookUtils.init({  //FB.init({
+      appId:'1544469515798401', // App ID from the App Dashboard
+//      status:true, // check the login status upon init?
+      cookie:true, // set sessions cookies to allow your server to access the session?
+      xfbml:true, // parse XFBML tags on this page?
+      version:'v2.1'
+    });
+
+/*work!
+  FB.login(function(response) {
+    // Handle the response object, like in statusChangeCallback() in our demo
+    // code.
+  }, {scope:'public_profile,email,user_friends', return_scopes: true});
+*/
+
+    Parse.FacebookUtils.logIn('public_profile,email,user_friends', {
+      success: function(user) {
+        if (!user.existed()) {
+          alert("User signed up and logged in through Facebook!");
+        } else {
+          alert("User logged in through Facebook!");
+        }
+      },
+      error: function(user, error) {
+        alert("User cancelled the Facebook login or did not fully authorize.");
+      }
+    });
+
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+</script>
+</html>
