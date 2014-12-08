@@ -30,15 +30,14 @@ function fbShare(e) {
 }
 
 function fbLogin() {
-  console.log('fbLogin');
+  console.log('fbLogin2');
+
+  elt = document.createElement('iframe');
+  elt.id = 'facebook_login_frame';
+  elt.src = 'http://54.149.101.128/braindead/fblogin.html';
+  document.getElementsByTagName('body')[0].appendChild(elt);
 
   /*
-  elt = document.createElement('iframe');
-  elt.id = 'facebook_load_frame';
-  elt.src = 'http://54.149.101.128/braindead/iframe.html';
-  document.getElementsByTagName('body')[0].appendChild(elt);
-  */
-
   Parse.FacebookUtils.logIn('email,first_name,last_name,name,gender,hometown', {
     success: function(user) {
       if (!user.existed()) {
@@ -51,6 +50,7 @@ function fbLogin() {
       alert("User cancelled the Facebook login or did not fully authorize.");
     }
   });
+  */
 }
 
 function deleteQuiz(e) {
